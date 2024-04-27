@@ -67,13 +67,13 @@ def wifi_connected():
     return wifi.radio.ipv4_address is not None
 
 print("Connecting to WiFi")
-while not wifi_connected():
-    print(".")
-    #  connect to your SSID
-    wifi.radio.connect(os.getenv('WIFI_SSID'), os.getenv('WIFI_PASSWORD'))
-
+# while not wifi_connected():
+#     print(".")
+#     #  connect to your SSID
+wifi.radio.connect(os.getenv('WIFI_SSID'), os.getenv('WIFI_PASSWORD'))
+device_ip = wifi.radio.ipv4_address
 print("Connected to WiFi")
-print("My IP address is", wifi.radio.ipv4_address)
+print(f"My IP address is {str(device_ip)}")
 
 # Create a socket pool
 pool = socketpool.SocketPool(wifi.radio)
@@ -138,10 +138,14 @@ if __name__ == "__main__":
 
     # Connect to MQTT Broker
     mqtt_client.connect()
-
+    
     try:
+        mqtt_client.publish(f"{MQTT_TOPIC}/ip", str(device_ip))
         while True:
             mqtt_client.loop(timeout=1.5)
             time.sleep(1)
     except Exception as e:
         print("An error occurred in the MQTT loop:", str(e))
+    except KeyboardInterrupt:
+        pass
+
