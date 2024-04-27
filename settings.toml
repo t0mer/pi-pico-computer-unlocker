@@ -1,0 +1,10 @@
+WIFI_SSID = ""
+WIFI_PASSWORD = ""
+# MQTT Broker settings
+MQTT_BROKER = ""
+MQTT_PORT = 1883  # Default port for non-TLS connections
+MQTT_USERNAME = ""  # Not required for all brokers
+MQTT_PASSWORD = ""  # Not required for all brokers
+MQTT_TOPIC = "" #Topic to listen
+TOKEN = "" #Token to verify the sender of the password. you can use the online tool here: https://it-tools.techblog.co.il/token-generator
+HID_LAYOUT = "US" #Default keyboard layout to use.
