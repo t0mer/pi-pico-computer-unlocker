@@ -29,3 +29,63 @@ Now it is time to install the unlocker. go the the unlocker github trpository: h
 Click on "Code" and then "Download ZIP":
 ![alt text](screenshots/download.png)
 
+Unzip the file the file and copy the following files into you Raspberry pi pico:
+![alt text](screenshots/files.png)
+* lib - Contains the Requirements and Libreries nedded for the program to run.
+* boot.py - Containes the code to disable the auto-mounting of the pi as a storage device.
+* code.py - The main code of the program.
+* settings.toml - Contains the enviroment variables settings:
+
+```toml
+WIFI_SSID = "" #Your Wifi SSID
+WIFI_PASSWORD = "" #Your Wifi password
+# MQTT Broker settings
+MQTT_BROKER = "" #The MQTT Broker address
+MQTT_PORT = 1883  # Default port for non-TLS connections
+MQTT_USERNAME = ""  #MQTT Username, Not required for all brokers
+MQTT_PASSWORD = ""  #MQTT Password, Not required for all brokers
+MQTT_TOPIC = "" #Topic to subscribe
+TOKEN = "" #Token to verify the sender of the password. you can use the online tool here: https://it-tools.techblog.co.il/token-generator
+HID_LAYOUT = "US" #Default keyboard layout to use.
+```
+
+The upported layouts are:
+* US (Default)
+* CZ
+* DA
+* DE
+* ES
+* FR
+* HU
+* IT
+* PO
+* SW
+* TR
+* UK
+
+Once done, Save the files and Dicsonnect/Reconnect the pi to the USB. The respberry pi drive should disappear.
+
+
+## Working with th Unlocker
+When the unlocker comes online, it publishes it's own ip adress in a MQTT topic, that way you can verify that it's online.
+![alt text](screenshots/deviceip.png)
+
+To Unlock the computer the only thing you should do is to publish MQTT topic with the following json:
+
+```json
+{
+  "token":"bcQxAOfoW4l3yW6ur4",
+  "password":"!123456!"
+}
+```
+
+* token - The same token you places in the setting.toml file. This is to verify that the password sent by authorized sender.
+* password - The password fo the computer you want to unlock.
+
+
+# Disclaimer
+The information provided in this guide is for educational and informational purposes only. Users should exercise caution and test the system thoroughly in a controlled environment before implementing it in a real-world setting. The author or contributors are not responsible for any damages, data loss, or security breaches that may occur from the use of this system. It is the user's responsibility to ensure that their usage complies with all applicable laws and policies regarding access and security.
+
+The software and methods described are based on open-source tools, which are subject to their own licenses and restrictions. Users should ensure they comply with all such licenses and use the software in accordance with the licensing terms provided by their respective owners.
+
+Users should be aware of the security risks associated with remote access systems and take appropriate measures to secure communications and authenticate commands. Improper implementation or misuse of the system could potentially expose users or systems to risks such as unauthorized access or data breaches.
