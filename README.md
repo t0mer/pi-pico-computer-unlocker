@@ -7,34 +7,35 @@ https://github.com/t0mer/pi-pico-computer-unlocker/assets/4478920/e89226e9-75db-
 
 ## Getting started
 
-### Flash the raspberry pi with circuitpython
+### Flash the Raspberry Piwith circuitpython
 Before we can run the project on the raspberry pi, we need to flush it with the circuitpython firmware for raspberry pi pico w.
 To do so, please follow the following steps:
 
 * Download the latest version of the [circuitpython](https://circuitpython.org/board/raspberry_pi_pico_w/).
-* Hold down the BOOTSEL button, and while continuing to hold it (don't let go!), plug the Pico into the USB. ntinue to hold the BOOTSEL button until the RPI-RP2 drive appears!
+* Hold down the BOOTSEL button, and while continuing to hold it (don’t let go!), plug the Pico into the USB. continue to hold the BOOTSEL button until the RPI-RP2 drive appears!
 ![alt text](screenshots/bootsel.png)
 * You will see a new disk drive appear called RPI-RP2. Drag the adafruit_circuitpython_etc.uf2 file to RPI-RP2.
-*The RPI-RP2 drive will disappear and a new disk drive called CIRCUITPY will appear.
+* The RPI-RP2 drive will disappear and a new disk drive called CIRCUITPY will appear.
 
 That's it, you're done!
 
 
 ### Flash Resetting UF2
-If your Pico enters an unusual state and fails to appear as a disk drive during the installation of CircuitPython, consider using this ['nuke' UF2 file.](https://cdn-learn.adafruit.com/assets/assets/000/099/419/original/flash_nuke.uf2?1613329170) It performs a thorough cleansing of your Flash Memory, erasing all files on the board, but it will help restore functionality. After this process, proceed to reinstall CircuitPython.
+If your Pico enters an unusual state and fails to appear as a disk drive during the installation of CircuitPython, consider using this ['nuke' UF2 file.](https://cdn-learn.adafruit.com/assets/assets/000/099/419/original/flash_nuke.uf2?1613329170)  It performs a thorough cleansing of your Flash Memory, erasing all files on the board, but it will help restore functionality. After this process, proceed to reinstall CircuitPython.
 
 ### Install the unlocker program to the raspberry pi pico w
-Now it is time to install the unlocker. go the the unlocker github trpository: https://github.com/t0mer/pi-pico-computer-unlocker.
+Now it is time to install the unlocker. go the the unlocker GitHub rpository: https://github.com/t0mer/pi-pico-computer-unlocker.
 
-Click on "Code" and then "Download ZIP":
+Click on “Code” and then “Download ZIP”:
 ![alt text](screenshots/download.png)
 
-Unzip the file the file and copy the following files into you Raspberry pi pico:
+Unzip the file the file and copy the following files into your Raspberry Pi Pico:
+
 ![alt text](screenshots/files.png)
-* lib - Contains the Requirements and Libreries nedded for the program to run.
-* boot.py - Containes the code to disable the auto-mounting of the pi as a storage device.
-* code.py - The main code of the program.
-* settings.toml - Contains the enviroment variables settings:
+* lib — Contains the Requirements and Libraries needed for the program to run.
+* boot.py — Contains the code to disable the auto-mounting of the pi as a storage device.
+* code.py — The main code of the program.
+* settings.toml — Contains the environment variables settings:
 
 ```toml
 WIFI_SSID = "" #Your Wifi SSID
@@ -63,14 +64,14 @@ The upported layouts are:
 * TR
 * UK
 
-Once done, Save the files and Dicsonnect/Reconnect the pi to the USB. The respberry pi drive should disappear.
+Once done, Save the files and disconnect/Reconnect the Pi to the USB. The raspberry Pi drive should disappear.
 
 
 ## Working with th Unlocker
-When the unlocker comes online, it publishes it's own ip adress in a MQTT topic, that way you can verify that it's online.
+When the unlocker comes online, it publishes its own IP address in an MQTT topic; that way, you can verify that it’s online.
 ![alt text](screenshots/deviceip.png)
 
-To Unlock the computer the only thing you should do is to publish MQTT topic with the following json:
+To Unlock the computer the only thing you should do is publish MQTT topic with the following JSON:
 
 ```json
 {
@@ -79,13 +80,12 @@ To Unlock the computer the only thing you should do is to publish MQTT topic wit
 }
 ```
 
-* token - The same token you places in the setting.toml file. This is to verify that the password sent by authorized sender.
-* password - The password fo the computer you want to unlock.
-
+* token — The same token you place in the setting.toml file. This is to verify that the password was sent by the authorized sender.
+* password — The password of the computer you want to unlock.
 
 # Disclaimer
-The information provided in this guide is for educational and informational purposes only. Users should exercise caution and test the system thoroughly in a controlled environment before implementing it in a real-world setting. The author or contributors are not responsible for any damages, data loss, or security breaches that may occur from the use of this system. It is the user's responsibility to ensure that their usage complies with all applicable laws and policies regarding access and security.
+The information provided in this guide is for educational and informational purposes only.
 
-The software and methods described are based on open-source tools, which are subject to their own licenses and restrictions. Users should ensure they comply with all such licenses and use the software in accordance with the licensing terms provided by their respective owners.
+Users should exercise caution and test the system thoroughly in a controlled environment before implementing it in a real-world setting. The author or contributors are not responsible for any damages, data loss, or security breaches that may occur from the use of this system.
 
-Users should be aware of the security risks associated with remote access systems and take appropriate measures to secure communications and authenticate commands. Improper implementation or misuse of the system could potentially expose users or systems to risks such as unauthorized access or data breaches.
+It is the user’s responsibility to ensure that their usage complies with all applicable laws and policies regarding access and security.
