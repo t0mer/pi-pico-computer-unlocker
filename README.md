@@ -13,7 +13,7 @@ To do so, please follow the following steps:
 
 * Download the latest version of the [circuitpython](https://circuitpython.org/board/raspberry_pi_pico_w/).
 * Hold down the BOOTSEL button, and while continuing to hold it (don’t let go!), plug the Pico into the USB. continue to hold the BOOTSEL button until the RPI-RP2 drive appears!
-![alt text](screenshots/bootsel.png)
+![alt text](https://raw.githubusercontent.com/t0mer/pi-pico-computer-unlocker/main/screenshots/bootsel.png)
 * You will see a new disk drive appear called RPI-RP2. Drag the adafruit_circuitpython_etc.uf2 file to RPI-RP2.
 * The RPI-RP2 drive will disappear and a new disk drive called CIRCUITPY will appear.
 
@@ -27,11 +27,11 @@ If your Pico enters an unusual state and fails to appear as a disk drive during 
 Now it is time to install the unlocker. go the the unlocker GitHub rpository: https://github.com/t0mer/pi-pico-computer-unlocker.
 
 Click on “Code” and then “Download ZIP”:
-![alt text](screenshots/download.png)
+![alt text](https://raw.githubusercontent.com/t0mer/pi-pico-computer-unlocker/main/screenshots/download.png)
 
 Unzip the file the file and copy the following files into your Raspberry Pi Pico:
 
-![alt text](screenshots/files.png)
+![alt text](https://raw.githubusercontent.com/t0mer/pi-pico-computer-unlocker/main/screenshots/files.png)
 * lib — Contains the Requirements and Libraries needed for the program to run.
 * boot.py — Contains the code to disable the auto-mounting of the pi as a storage device.
 * code.py — The main code of the program.
@@ -69,7 +69,7 @@ Once done, Save the files and disconnect/Reconnect the Pi to the USB. The raspbe
 
 ## Working with th Unlocker
 When the unlocker comes online, it publishes its own IP address in an MQTT topic; that way, you can verify that it’s online.
-![alt text](screenshots/deviceip.png)
+![alt text](https://raw.githubusercontent.com/t0mer/pi-pico-computer-unlocker/main/screenshots/deviceip.png)
 
 To Unlock the computer the only thing you should do is publish MQTT topic with the following JSON:
 
